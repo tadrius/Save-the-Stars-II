@@ -8,9 +8,8 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField] InputAction movement;
     [SerializeField] InputAction shoot;
-
-    private static string Horizontal = "Horizontal";
-    private static string Vertical = "Vertical";
+    [SerializeField] float xSpeed = 1.0f;
+    [SerializeField] float ySpeed = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,16 +30,18 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // USING NEWER INPUT SYSTEM
-        Vector2 movementValue = movement.ReadValue<Vector2>();
-        float horizontalAxis = movementValue.x;
-        float verticalAxis = movementValue.y;
+        Vector2 moveVal = movement.ReadValue<Vector2>();
+        float xMove = moveVal.x;
+        float yMove = moveVal.y;
 
-        // USING OLDER INPUT MANAGER
-        // float horizontalAxis = Input.GetAxis(Horizontal);
-        // float verticalAxis = Input.GetAxis(Vertical);
+        float xOffset = xMove * xSpeed * Time.deltaTime;
+        float yOffset = yMove * ySpeed * Time.deltaTime;
 
-        Debug.Log("Horizontal Axis: " + horizontalAxis);
-        Debug.Log("Vertical Axis: " + verticalAxis);
+        transform.localPosition = new Vector3(
+            transform.localPosition.x + xOffset, 
+            transform.localPosition.y + yOffset, 
+            transform.localPosition.z
+        );
+
     }
 }
