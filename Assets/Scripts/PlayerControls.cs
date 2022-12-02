@@ -8,8 +8,11 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField] InputAction movement;
     [SerializeField] InputAction shoot;
-    [SerializeField] float xSpeed = 1.0f;
-    [SerializeField] float ySpeed = 1.0f;
+    [SerializeField] float xSpeed = 10.0f;
+    [SerializeField] float ySpeed = 10.0f;
+    [SerializeField] [Min(0.0f)] float xRange = 4.0f;
+    [SerializeField] [Min(0.0f)] float yRange = 4.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,9 +40,15 @@ public class PlayerControls : MonoBehaviour
         float xOffset = xMove * xSpeed * Time.deltaTime;
         float yOffset = yMove * ySpeed * Time.deltaTime;
 
+        float xPos = transform.localPosition.x + xOffset;
+        float yPos = transform.localPosition.y + yOffset;
+
+        float clampedXPos = Mathf.Clamp(xPos, -xRange, xRange);
+        float clampedYPos = Mathf.Clamp(yPos, 0, yRange); // y min as 0 since ship starts at bottom of screen
+
         transform.localPosition = new Vector3(
-            transform.localPosition.x + xOffset, 
-            transform.localPosition.y + yOffset, 
+            clampedXPos, 
+            clampedYPos, 
             transform.localPosition.z
         );
 

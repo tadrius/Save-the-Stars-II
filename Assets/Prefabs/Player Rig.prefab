@@ -111,8 +111,10 @@ MonoBehaviour:
       m_Action: Shoot
       m_Flags: 0
     m_Flags: 0
-  xSpeed: 2
-  ySpeed: 2
+  xSpeed: 10
+  ySpeed: 10
+  xRange: 4
+  yRange: 4
 --- !u!1 &6915005666250200939
 GameObject:
   m_ObjectHideFlags: 0
