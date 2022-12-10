@@ -3168,8 +3168,6 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -7990856488508455691, guid: 7be598efcd1fdc54586b41ee09e32886, type: 2}
     value: {fileID: 1969940989}
-  - key: {fileID: 1523399546907239045, guid: 7be598efcd1fdc54586b41ee09e32886, type: 2}
-    value: {fileID: 1877433838}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1179093203
@@ -4475,12 +4473,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1858049698}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1877433838 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2061085766499987330, guid: 268db1d8639777149a70580899ab4031,
-    type: 3}
-  m_PrefabInstance: {fileID: 7628628764921060750}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1877433842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6422850937066481563, guid: 268db1d8639777149a70580899ab4031,
@@ -4878,6 +4870,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6915005666250200933, guid: f319949cb968848479debeecad72f6b7,
+        type: 3}
+      propertyPath: field of view
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 6915005666750278480, guid: f319949cb968848479debeecad72f6b7,
         type: 3}
       propertyPath: m_RootOrder
