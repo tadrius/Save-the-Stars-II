@@ -496,6 +496,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser Particles
       objectReference: {fileID: 0}
+    - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7817643365859296353, guid: 38dade0192faf97498d9159c40cba508,
         type: 3}
       propertyPath: m_RootOrder
