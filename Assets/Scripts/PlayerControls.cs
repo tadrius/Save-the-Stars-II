@@ -11,9 +11,11 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float translateSpeed = 7.5f;
     [SerializeField] float positionRotateFactor = 7.5f;
     [SerializeField] float controlRotateFactor = 15.0f;
-    [SerializeField] [Min(0.0f)] float xTranslateRange = 3.75f;
-    [SerializeField] [Min(0.0f)] float yTranslateRange = 2.25f;
-    [SerializeField] [Min(0.0f)] float smoothingSpeed = 3.5f;
+    [SerializeField] float xTranslateMax = 3.75f;
+    [SerializeField] float xTranslateMin = -3.75f;
+    [SerializeField] float yTranslateMax = 2.25f;
+    [SerializeField] float yTranslateMin = -2.25f;
+    [SerializeField] float smoothingSpeed = 3.5f;
 
     float xMove = 0.0f, yMove = 0.0f;
     float pitchSmoothing = 0.5f, rollSmoothing = 0.5f;
@@ -112,8 +114,8 @@ public class PlayerControls : MonoBehaviour
         float xPos = transform.localPosition.x + xOffset;
         float yPos = transform.localPosition.y + yOffset;
 
-        float clampedXPos = Mathf.Clamp(xPos, -xTranslateRange, xTranslateRange);
-        float clampedYPos = Mathf.Clamp(yPos, -yTranslateRange, yTranslateRange);
+        float clampedXPos = Mathf.Clamp(xPos, xTranslateMin, xTranslateMax);
+        float clampedYPos = Mathf.Clamp(yPos, yTranslateMin, yTranslateMax);
 
         transform.localPosition = new Vector3(
             clampedXPos,
