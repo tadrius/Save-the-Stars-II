@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Timeline;
 using UnityEngine.Playables;
 
 public class CollisionHandler : MonoBehaviour
@@ -14,23 +13,46 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] GameObject timeline;
 
     private void OnTriggerEnter(Collider other) {
-        // Destroy(this.gameObject);
+        InitiateFailSequence();
+    }
+
+    private void InitiateFailSequence() {
+        DeactivateShipVisuals();
+        DeactivateControls();
+        DeactivateTimeline();
+        ReloadScene();        
+    }
+
+    private void DeactivateShipVisuals() {
+        this.GetComponent<MeshRenderer>().enabled = false;
+        for (int i = 0; i < transform.childCount; i++) {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
+    private void DeactivateControls() {
+        this.GetComponentInParent<PlayerControls>().enabled = false;
+    }
+
+    private void DeactivateTimeline() {
         timeline.GetComponent<PlayableDirector>().Pause();
-        StartCoroutine(LoadSceneWithDelay(SceneManager.GetActiveScene().buildIndex));
+    }
+
+    private void ReloadScene() {
+        LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void LoadScene(int sceneBuildIndex) {
+        StartCoroutine(LoadSceneWithDelay(sceneBuildIndex));
     }
 
     IEnumerator LoadSceneWithDelay(int sceneBuildIndex)
     {
+        // delay scene load
         for (float time = sceneLoadDelay; time >= 0; time -= Time.deltaTime)
         {
             yield return null;
-            Debug.Log($"{time}");
         }
-        LoadScene(sceneBuildIndex);
-    }
-
-    void LoadScene(int sceneBuildIndex)
-    {
         // load next scene if scene count is greater than next scene index
         if (SceneManager.sceneCountInBuildSettings > sceneBuildIndex)
         {
