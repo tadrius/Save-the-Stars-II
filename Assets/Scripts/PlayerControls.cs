@@ -6,22 +6,34 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
 
+    [Header("Keybindings")]
+    [Tooltip("Keybindings to move up, down, left, and right.")]
     [SerializeField] InputAction movement;
+    [Tooltip("Keybinding to shoot.")]
     [SerializeField] InputAction shoot;
-    [SerializeField] GameObject[] weapons;
+    [Header("Movement Settings")]
+    [Tooltip("How quickly the player can move vertically and horizontally.")]
     [SerializeField] float translateSpeed = 7.5f;
+    [Tooltip("How much the player rotates based on their local position.")]
     [SerializeField] float positionRotateFactor = 7.5f;
+    [Tooltip("How much the player rotates as they move.")]
     [SerializeField] float controlRotateFactor = 15.0f;
+    [Tooltip("How far right the player can move.")]
     [SerializeField] float xTranslateMax = 3.75f;
+    [Tooltip("How far left the player can move.")]
     [SerializeField] float xTranslateMin = -3.75f;
-    [SerializeField] float yTranslateMax = 2.25f;
-    [SerializeField] float yTranslateMin = -2.25f;
-    [SerializeField] float smoothingSpeed = 3.5f;
-
-    ParticleSystem[] weaponParticleSystems;
+    [Tooltip("How far up the player can move.")]
+    [SerializeField] float yTranslateMax = 2.75f;
+    [Tooltip("How far down the player can move.")]
+    [SerializeField] float yTranslateMin = -1.75f;
+    [Tooltip("How quickly the ship rotates based as the player moves.")]
+    [SerializeField] float rotationSpeed = 3.5f;
+    [Header("Other Settings")]
+    [Tooltip("An array of game objects, each with a particle system component for projectiles.")]
+    [SerializeField] GameObject[] weapons;
 
     float xMove = 0.0f, yMove = 0.0f;
-    float pitchSmoothing = 0.5f, rollSmoothing = 0.5f;
+    float normalizedPitch = 0.5f, normalizedRoll = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -62,53 +74,55 @@ public class PlayerControls : MonoBehaviour
         float positionYaw = transform.localPosition.x * positionRotateFactor;
         float positionRoll = 0.0f;
 
-        // calculate rotations based on control
+        // calculate rotation ranges based on control
         float minControlPitch = -controlRotateFactor;
         float minControlRoll = -controlRotateFactor;
         
         float maxControlPitch = controlRotateFactor;
         float maxControlRoll = controlRotateFactor;
 
-        pitchSmoothing = processSmoothing(yMove, pitchSmoothing);
-        rollSmoothing = processSmoothing(xMove, rollSmoothing);
+        // calculate pitch and roll normalized
+        normalizedPitch = getNormalizedControlRotation(yMove, normalizedPitch);
+        normalizedRoll = getNormalizedControlRotation(xMove, normalizedRoll);
 
-        float controlPitch = Mathf.Lerp(minControlPitch, maxControlPitch, pitchSmoothing);
+        // use normalized rotation values to lerp between the min and max control rotation values
+        float controlPitch = Mathf.Lerp(minControlPitch, maxControlPitch, normalizedPitch);
         float controlYaw = 0.0f;
-        float controlRoll = Mathf.Lerp(minControlRoll, maxControlRoll, rollSmoothing);
+        float controlRoll = Mathf.Lerp(minControlRoll, maxControlRoll, normalizedRoll);
 
-        // apply rotation
+        // apply final rotations
         transform.localRotation = Quaternion.Euler(
             positionPitch - controlPitch, 
             positionYaw - controlYaw, 
             positionRoll - controlRoll);
     }
 
-    private float processSmoothing(float control, float curSmoothing) {
-        float deltaSmoothingSpeed = smoothingSpeed * Time.deltaTime;
-        if (curSmoothing > 0.5f) {
+    private float getNormalizedControlRotation(float control, float curNormalizedRotation) {
+        float deltaRotationSpeed = rotationSpeed * Time.deltaTime;
+        if (curNormalizedRotation > 0.5f) {
             if (control > 0.0f) {
-                curSmoothing = Mathf.Min(curSmoothing + deltaSmoothingSpeed, 1.0f);
+                curNormalizedRotation = Mathf.Min(curNormalizedRotation + deltaRotationSpeed, 1.0f);
             } else if (control < 0.0f) {
-                curSmoothing = curSmoothing - 2.0f * deltaSmoothingSpeed;
+                curNormalizedRotation = curNormalizedRotation - 2.0f * deltaRotationSpeed;
             } else {
-                curSmoothing = Mathf.Max(curSmoothing - deltaSmoothingSpeed, 0.5f);
+                curNormalizedRotation = Mathf.Max(curNormalizedRotation - deltaRotationSpeed, 0.5f);
             }
-        } else if (curSmoothing < 0.5f) {
+        } else if (curNormalizedRotation < 0.5f) {
             if (control > 0.0f) {
-                curSmoothing = curSmoothing + 2.0f * deltaSmoothingSpeed;
+                curNormalizedRotation = curNormalizedRotation + 2.0f * deltaRotationSpeed;
             } else if (control < 0.0f) {
-                curSmoothing = Mathf.Max(curSmoothing - deltaSmoothingSpeed, 0.0f);
+                curNormalizedRotation = Mathf.Max(curNormalizedRotation - deltaRotationSpeed, 0.0f);
             } else {
-                curSmoothing = Mathf.Min(curSmoothing + deltaSmoothingSpeed, 0.5f);
+                curNormalizedRotation = Mathf.Min(curNormalizedRotation + deltaRotationSpeed, 0.5f);
             }
         } else {
             if (control > 0.0f) {
-                curSmoothing = Mathf.Min(curSmoothing + deltaSmoothingSpeed, 1.0f);
+                curNormalizedRotation = Mathf.Min(curNormalizedRotation + deltaRotationSpeed, 1.0f);
             } else if (control < 0.0f) {
-                curSmoothing = Mathf.Max(curSmoothing - deltaSmoothingSpeed, 0.0f);
+                curNormalizedRotation = Mathf.Max(curNormalizedRotation - deltaRotationSpeed, 0.0f);
             }            
         }
-        return curSmoothing;
+        return curNormalizedRotation;
     }
 
     private void ProcessTranslation()
