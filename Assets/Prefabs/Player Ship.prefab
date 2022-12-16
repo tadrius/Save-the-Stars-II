@@ -358,6 +358,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser Particles
       objectReference: {fileID: 0}
+    - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
+        type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
+        type: 3}
+      propertyPath: CollisionModule.minKillSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
+        type: 3}
+      propertyPath: CollisionModule.m_Bounce.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
+        type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
+        type: 3}
+      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7817643365859296353, guid: 38dade0192faf97498d9159c40cba508,
         type: 3}
       propertyPath: m_RootOrder
