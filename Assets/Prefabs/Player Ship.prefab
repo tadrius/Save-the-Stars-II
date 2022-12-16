@@ -254,7 +254,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 0147378c-8a8a-4e09-a512-9b5280844fae
-      m_Path: <Mouse>/leftButton
+      m_Path: <Keyboard>/space
       m_Interactions: 
       m_Processors: 
       m_Groups: 

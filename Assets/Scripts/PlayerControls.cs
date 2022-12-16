@@ -8,6 +8,7 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField] InputAction movement;
     [SerializeField] InputAction shoot;
+    [SerializeField] GameObject[] weapons;
     [SerializeField] float translateSpeed = 7.5f;
     [SerializeField] float positionRotateFactor = 7.5f;
     [SerializeField] float controlRotateFactor = 15.0f;
@@ -23,6 +24,7 @@ public class PlayerControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DeactivateWeapons();
     }
 
     void OnEnable() {
@@ -39,8 +41,9 @@ public class PlayerControls : MonoBehaviour
     void Update()
     {
         UpdateMoveFields();
-        Translate();
-        Rotate();
+        ProcessTranslation();
+        ProcessRotation();
+        ProcessFiring();
     }
 
     private void UpdateMoveFields() {
@@ -49,7 +52,7 @@ public class PlayerControls : MonoBehaviour
         yMove = moveVal.y;
     }
 
-    private void Rotate() 
+    private void ProcessRotation() 
     {
 
         // calculate rotations based on position
@@ -106,7 +109,7 @@ public class PlayerControls : MonoBehaviour
         return curSmoothing;
     }
 
-    private void Translate()
+    private void ProcessTranslation()
     {
         float xOffset = xMove * translateSpeed * Time.deltaTime;
         float yOffset = yMove * translateSpeed * Time.deltaTime;
@@ -122,5 +125,27 @@ public class PlayerControls : MonoBehaviour
             clampedYPos,
             transform.localPosition.z
         );
+    }
+
+    private void ProcessFiring()
+    {
+        if (shoot.IsPressed()) {
+            ActivateWeapons();
+        } else {
+            DeactivateWeapons();
+        }
+    }
+
+    
+    private void ActivateWeapons() {
+        foreach (GameObject weapon in weapons) {
+            weapon.SetActive(true);
+        }
+    }
+
+    private void DeactivateWeapons() {
+        foreach (GameObject weapon in weapons) {
+            weapon.SetActive(false);
+        }
     }
 }
