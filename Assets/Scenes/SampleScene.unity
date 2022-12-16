@@ -2123,6 +2123,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 712318383}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &729718278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6602989028271571029, guid: f319949cb968848479debeecad72f6b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 6915005666559804076}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &762162692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4930,6 +4936,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 6947047974576498084, guid: f319949cb968848479debeecad72f6b7,
+        type: 3}
+      propertyPath: shootingRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947047974576498084, guid: f319949cb968848479debeecad72f6b7,
+        type: 3}
+      propertyPath: guns.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947047974576498084, guid: f319949cb968848479debeecad72f6b7,
+        type: 3}
+      propertyPath: guns.Array.data[0]
+      value: 
+      objectReference: {fileID: 729718278}
+    - target: {fileID: 6947047974576498084, guid: f319949cb968848479debeecad72f6b7,
+        type: 3}
+      propertyPath: weapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947047974576498084, guid: f319949cb968848479debeecad72f6b7,
+        type: 3}
+      propertyPath: weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 729718278}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f319949cb968848479debeecad72f6b7, type: 3}
 --- !u!1001 &7628628764921060750

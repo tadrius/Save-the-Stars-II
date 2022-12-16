@@ -18,13 +18,15 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float yTranslateMin = -2.25f;
     [SerializeField] float smoothingSpeed = 3.5f;
 
+    ParticleSystem[] weaponParticleSystems;
+
     float xMove = 0.0f, yMove = 0.0f;
     float pitchSmoothing = 0.5f, rollSmoothing = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        DeactivateWeapons();
+        SetWeaponsActive(false);
     }
 
     void OnEnable() {
@@ -130,22 +132,17 @@ public class PlayerControls : MonoBehaviour
     private void ProcessFiring()
     {
         if (shoot.IsPressed()) {
-            ActivateWeapons();
+            SetWeaponsActive(true);
         } else {
-            DeactivateWeapons();
+            SetWeaponsActive(false);
         }
     }
 
     
-    private void ActivateWeapons() {
+    private void SetWeaponsActive(bool isActive) {
         foreach (GameObject weapon in weapons) {
-            weapon.SetActive(true);
-        }
-    }
-
-    private void DeactivateWeapons() {
-        foreach (GameObject weapon in weapons) {
-            weapon.SetActive(false);
+            var em = weapon.GetComponent<ParticleSystem>().emission;
+            em.enabled = isActive;
         }
     }
 }
