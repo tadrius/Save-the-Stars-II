@@ -324,6 +324,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneLoadDelay: 1
   timeline: {fileID: 0}
+  failParticles:
+  - {fileID: 0}
+  - {fileID: 0}
+  failParticlesDelay: 0.35
 --- !u!1 &532147330822861842
 GameObject:
   m_ObjectHideFlags: 0

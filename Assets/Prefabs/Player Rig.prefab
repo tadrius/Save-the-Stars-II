@@ -179,11 +179,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6915005666750278480}
     m_Modifications:
-    - target: {fileID: 1108426610753875668, guid: 6a7001c6e56b84e47bbf3fc62547cfbc,
-        type: 3}
-      propertyPath: m_Name
-      value: Animated Ship Model
-      objectReference: {fileID: 0}
     - target: {fileID: 2033358919585483033, guid: 6a7001c6e56b84e47bbf3fc62547cfbc,
         type: 3}
       propertyPath: m_RootOrder

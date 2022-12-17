@@ -8,19 +8,37 @@ public class CollisionHandler : MonoBehaviour
 {
 
     [Tooltip("A delay between triggering loading the next scene and loading the scene.")]
-    [SerializeField] float sceneLoadDelay = 1.0f;
-    [Tooltip("Object with Playable Director assigned with the master timeline.")]
-    [SerializeField] GameObject timeline;
+    [SerializeField] float sceneLoadDelay = 2.75f;
+    [Tooltip("Playable Director assigned with the master timeline.")]
+    [SerializeField] PlayableDirector timeline;
+    [Tooltip("Particles to play on failure, from first to play to last.")]
+    [SerializeField] ParticleSystem[] failParticles;
+    [Tooltip("Delay between starting each fail particles.")]
+    [SerializeField] float failParticlesDelay = 0.2f;
 
     private void OnTriggerEnter(Collider other) {
         InitiateFailSequence();
     }
 
     private void InitiateFailSequence() {
-        DeactivateShipVisuals();
+        StartCoroutine(PlayFailFX());
         DeactivateControls();
         DeactivateTimeline();
-        ReloadScene();        
+        ReloadScene();
+    }
+
+    IEnumerator PlayFailFX() {
+        for (int i = 0; i < failParticles.GetLength(0); i++) {
+            failParticles[i].Play();
+            // add a delay if the current index is the last available
+            if (i + 1 < failParticles.GetLength(0)) {
+                for (float time = failParticlesDelay; time >= 0; time -= Time.deltaTime)
+                {
+                    yield return null;
+                }
+            }
+        }
+        DeactivateShipVisuals();
     }
 
     private void DeactivateShipVisuals() {
@@ -35,7 +53,7 @@ public class CollisionHandler : MonoBehaviour
     }
 
     private void DeactivateTimeline() {
-        timeline.GetComponent<PlayableDirector>().Pause();
+        timeline.Pause();
     }
 
     private void ReloadScene() {
@@ -46,8 +64,7 @@ public class CollisionHandler : MonoBehaviour
         StartCoroutine(LoadSceneWithDelay(sceneBuildIndex));
     }
 
-    IEnumerator LoadSceneWithDelay(int sceneBuildIndex)
-    {
+    IEnumerator LoadSceneWithDelay(int sceneBuildIndex) {
         // delay scene load
         for (float time = sceneLoadDelay; time >= 0; time -= Time.deltaTime)
         {
@@ -64,5 +81,4 @@ public class CollisionHandler : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-
 }
