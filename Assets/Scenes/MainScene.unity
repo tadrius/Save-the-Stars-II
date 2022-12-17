@@ -8271,16 +8271,6 @@ PrefabInstance:
       propertyPath: timeline
       value: 
       objectReference: {fileID: 1179093202}
-    - target: {fileID: 5578410633666581205, guid: f319949cb968848479debeecad72f6b7,
-        type: 3}
-      propertyPath: sceneLoadDelay
-      value: 2.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 5578410633666581205, guid: f319949cb968848479debeecad72f6b7,
-        type: 3}
-      propertyPath: failParticlesDelay
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 6915005666750278480, guid: f319949cb968848479debeecad72f6b7,
         type: 3}
       propertyPath: m_RootOrder
