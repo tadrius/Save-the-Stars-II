@@ -21,13 +21,13 @@ public class CollisionHandler : MonoBehaviour
     }
 
     private void InitiateFailSequence() {
-        StartCoroutine(PlayFailFX());
+        StartCoroutine(PlayFailFXWithDelay());
         DeactivateControls();
         DeactivateTimeline();
         ReloadScene();
     }
 
-    IEnumerator PlayFailFX() {
+    IEnumerator PlayFailFXWithDelay() {
         for (int i = 0; i < failParticles.GetLength(0); i++) {
             failParticles[i].Play();
             // add a delay if the current index is the last available

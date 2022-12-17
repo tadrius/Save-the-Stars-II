@@ -8270,16 +8270,16 @@ PrefabInstance:
         type: 3}
       propertyPath: timeline
       value: 
-      objectReference: {fileID: 1179093201}
-    - target: {fileID: 6388605607620340477, guid: f319949cb968848479debeecad72f6b7,
+      objectReference: {fileID: 1179093202}
+    - target: {fileID: 5578410633666581205, guid: f319949cb968848479debeecad72f6b7,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: sceneLoadDelay
+      value: 2.75
       objectReference: {fileID: 0}
-    - target: {fileID: 6462658215353280805, guid: f319949cb968848479debeecad72f6b7,
+    - target: {fileID: 5578410633666581205, guid: f319949cb968848479debeecad72f6b7,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: failParticlesDelay
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6915005666750278480, guid: f319949cb968848479debeecad72f6b7,
         type: 3}
@@ -8340,11 +8340,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player Rig
-      objectReference: {fileID: 0}
-    - target: {fileID: 6947047974576498084, guid: f319949cb968848479debeecad72f6b7,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f319949cb968848479debeecad72f6b7, type: 3}

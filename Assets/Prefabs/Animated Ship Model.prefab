@@ -322,12 +322,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a848b857e2e104784ce0bb6f18f788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneLoadDelay: 1
+  sceneLoadDelay: 2.75
   timeline: {fileID: 0}
   failParticles:
   - {fileID: 0}
   - {fileID: 0}
-  failParticlesDelay: 0.35
+  failParticlesDelay: 0.2
 --- !u!1 &532147330822861842
 GameObject:
   m_ObjectHideFlags: 0
