@@ -68,7 +68,6 @@ public class PlayerControls : MonoBehaviour
 
     private void ProcessRotation() 
     {
-
         // calculate rotations based on position
         float positionPitch = -transform.localPosition.y * positionRotateFactor;
         float positionYaw = transform.localPosition.x * positionRotateFactor;
@@ -153,7 +152,7 @@ public class PlayerControls : MonoBehaviour
     }
 
     
-    private void SetWeaponsActive(bool isActive) {
+    public void SetWeaponsActive(bool isActive) {
         foreach (GameObject weapon in weapons) {
             var em = weapon.GetComponent<ParticleSystem>().emission;
             em.enabled = isActive;

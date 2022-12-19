@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
         SpawnDeathFX();
         Destroy(this.gameObject);
     }
+    
     private void SpawnDeathFX() {
          // spawn death particles and child under runtime spawn parent
         GameObject particlesInstance = Instantiate(deathParticles, transform.position, Quaternion.identity);

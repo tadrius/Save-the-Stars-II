@@ -53,7 +53,9 @@ public class CollisionHandler : MonoBehaviour
     }
 
     private void DeactivateControls() {
-        this.GetComponentInParent<PlayerControls>().enabled = false;
+        PlayerControls pc = this.GetComponentInParent<PlayerControls>();
+        pc.SetWeaponsActive(false);
+        pc.enabled = false;
     }
 
     private void DeactivateTimeline() {
