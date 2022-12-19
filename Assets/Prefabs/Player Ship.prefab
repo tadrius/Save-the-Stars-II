@@ -453,6 +453,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5086699073876101160}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6405405348475756494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6792844618319730715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71895e0905e29b46992063e0ac85a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitParticles: {fileID: 1329845292236604, guid: 0f702fc0605daf84d92004eb9ae2aa38,
+    type: 3}
+  runtimeSpawnsParent: {fileID: 0}
+  damage: 1
 --- !u!1001 &8339118898692673949
 PrefabInstance:
   m_ObjectHideFlags: 0
