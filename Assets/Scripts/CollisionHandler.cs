@@ -9,12 +9,16 @@ public class CollisionHandler : MonoBehaviour
 
     [Tooltip("A delay between triggering loading the next scene and loading the scene.")]
     [SerializeField] float sceneLoadDelay = 2.75f;
-    [Tooltip("Playable Director assigned with the master timeline.")]
-    [SerializeField] PlayableDirector timeline;
     [Tooltip("Particles to play on failure, from first to play to last.")]
     [SerializeField] ParticleSystem[] failParticles;
     [Tooltip("Delay between starting each fail particles.")]
     [SerializeField] float failParticlesDelay = 0.2f;
+
+    private PlayableDirector timeline;
+
+    private void Start() {
+        timeline = FindObjectOfType<PlayableDirector>();
+    }
 
     private void OnTriggerEnter(Collider other) {
         InitiateFailSequence();

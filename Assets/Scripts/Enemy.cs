@@ -9,8 +9,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject deathParticles;
     [Tooltip("Parent object under which to spawn runtime objects such as deathParticles.")]
     [SerializeField] Transform runtimeSpawnsParent;
-    [Tooltip("Enemy point value. When enemy is destroyed the player's score will increase by this amount.")]
-    [SerializeField] int pointValue = 1;
+    [Tooltip("Enemy score value. When enemy is hit the player's score will increase by this amount.")]
+    [SerializeField] int scoreValue = 1;
+    [Tooltip("How many hits the enemy can take before being destroyed.")]
+    [SerializeField] int hitPoints = 1;
 
     Scoreboard scoreboard;
 
@@ -19,11 +21,23 @@ public class Enemy : MonoBehaviour
     }
 
     private void OnParticleCollision(GameObject other) {
-        scoreboard.IncreaseScore(pointValue);
+        scoreboard.IncreaseScore(scoreValue);
+        
+        // TODO - receive different amounts of damage depending on Player weapons
+        ReceiveDamage(1);
+    }
+
+    private void ReceiveDamage(int damageAmount) {
+        hitPoints -= damageAmount;
+        if (hitPoints <= 0) {
+            Die();
+        }
+    }
+
+    private void Die() {
         SpawnDeathFX();
         Destroy(this.gameObject);
     }
-
     private void SpawnDeathFX() {
          // spawn death particles and child under runtime spawn parent
         GameObject particlesInstance = Instantiate(deathParticles, transform.position, Quaternion.identity);
