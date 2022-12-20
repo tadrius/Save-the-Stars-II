@@ -9653,7 +9653,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 565e690ce42d10242ac1e4ef45eee2d2, type: 2}
+  - {fileID: 2100000, guid: 83a8cce730743d74fa38b58e4cb9ca39, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9716,7 +9716,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff504efb53155cb4180ed5f6f42a860f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles: {fileID: 198856239026640498}
 --- !u!1 &1919173750998442
 GameObject:
   m_ObjectHideFlags: 0
