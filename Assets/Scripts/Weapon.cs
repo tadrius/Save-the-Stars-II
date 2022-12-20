@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-
     [Tooltip("Hit particles for weapon collisions.")]
     [SerializeField] GameObject hitParticles;
-    [Tooltip("Parent object under which to spawn runtime objects such as collision particles.")]
-    [SerializeField] Transform runtimeSpawnsParent;
+    // [Tooltip("Parent object under which to spawn runtime objects such as collision particles.")]
+    // [SerializeField] Transform runtimeSpawnsParent;
     [Tooltip("How much damage a single hit of this weapon will deal.")]
     [SerializeField] int damage = 1;
 
+    static GameObject RuntimeSpawnsParent;
+    static string RuntimeSpawns = "RuntimeSpawns";
     private ParticleSystem part;
     private List<ParticleCollisionEvent> collisionEvents;
 
     // Start is called before the first frame update
     void Start()
     {
+        RuntimeSpawnsParent = GameObject.FindGameObjectWithTag(RuntimeSpawns);
         part = GetComponent<ParticleSystem>();
         collisionEvents = new List<ParticleCollisionEvent>();        
     }
@@ -32,7 +34,7 @@ public class Weapon : MonoBehaviour
         foreach(ParticleCollisionEvent collision in collisionEvents) {
             // spawn hit particles and child under runtime spawn parent
             GameObject particlesInstance = Instantiate(hitParticles, collision.intersection, Quaternion.identity);
-            particlesInstance.transform.parent = runtimeSpawnsParent;   
+            particlesInstance.transform.parent = RuntimeSpawnsParent.transform;   
         }            
     }
 }

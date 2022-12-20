@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1833976597140432476}
   - component: {fileID: 3376657842141424121}
   - component: {fileID: 664486704621591859}
+  - component: {fileID: 2374469582944771871}
   m_Layer: 0
   m_Name: CrystalMetal_01
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2374469582944771871
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312877713528143078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1242787718562846042, guid: ea11c14baff531e4fb2854c4285ff683, type: 3}
