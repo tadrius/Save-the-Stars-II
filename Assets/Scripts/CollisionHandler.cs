@@ -15,9 +15,10 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] float failParticlesDelay = 0.2f;
 
     private PlayableDirector timeline;
+    private string masterTimeline = "MasterTimeline";
 
     private void Start() {
-        timeline = FindObjectOfType<PlayableDirector>();
+        timeline = GameObject.FindGameObjectWithTag(masterTimeline).GetComponent<PlayableDirector>();
     }
 
     private void OnTriggerEnter(Collider other) {
