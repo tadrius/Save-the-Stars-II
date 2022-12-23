@@ -373,7 +373,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathParticles: {fileID: 1773411739653543121, guid: 64a5abd9613651f45a3afdc444e90d5b,
     type: 3}
-  scoreValue: 1
+  hitValue: 1
+  killValue: 3
   hitPoints: 2
 --- !u!1 &3552898228733001122
 GameObject:

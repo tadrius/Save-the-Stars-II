@@ -171,7 +171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathParticles: {fileID: 6078947105719011586, guid: 11f4e01e2a13d91408725db99cfecc8f,
     type: 3}
-  scoreValue: 1
+  hitValue: 1
+  killValue: 6
   hitPoints: 5
 --- !u!1001 &8150229717331579093
 PrefabInstance:

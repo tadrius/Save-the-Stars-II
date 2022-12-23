@@ -6,8 +6,10 @@ public class Enemy : MonoBehaviour
 {
     [Tooltip("VFX for enemy death.")]
     [SerializeField] GameObject deathParticles;
-    [Tooltip("Enemy score value. When enemy is hit the player's score will increase by this amount.")]
-    [SerializeField] int scoreValue = 1;
+    [Tooltip("Enemy hit value. When enemy is hit the player's score will increase by this amount.")]
+    [SerializeField] int hitValue = 1;
+    [Tooltip("Enemy kill value. When enemy is destroyed the player's score will increase by this amount.")]
+    [SerializeField] int killValue = 2;
     [Tooltip("How much damage the enemy can receive before being destroyed.")]
     [SerializeField] int hitPoints = 1;
 
@@ -28,7 +30,7 @@ public class Enemy : MonoBehaviour
     }
 
     private void OnParticleCollision(GameObject other) {
-        scoreboard.IncreaseScore(scoreValue);
+        scoreboard.IncreaseScore(hitValue);
         Weapon weapon = other.GetComponent<Weapon>();
         ReceiveDamage(weapon.GetDamage());
     }
@@ -41,6 +43,7 @@ public class Enemy : MonoBehaviour
     }
 
     private void Die() {
+        scoreboard.IncreaseScore(killValue);
         SpawnDeathFX();
         Destroy(this.gameObject);
     }
