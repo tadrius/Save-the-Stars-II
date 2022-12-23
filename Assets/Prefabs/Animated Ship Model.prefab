@@ -323,7 +323,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneLoadDelay: 2.75
-  timeline: {fileID: 0}
   failParticles:
   - {fileID: 0}
   - {fileID: 0}

@@ -366,11 +366,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
         type: 3}
-      propertyPath: CollisionModule.minKillSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
-        type: 3}
       propertyPath: CollisionModule.m_Bounce.scalar
       value: 0
       objectReference: {fileID: 0}
@@ -467,7 +462,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitParticles: {fileID: 1329845292236604, guid: 0f702fc0605daf84d92004eb9ae2aa38,
     type: 3}
-  runtimeSpawnsParent: {fileID: 0}
   damage: 1
 --- !u!1001 &8339118898692673949
 PrefabInstance:

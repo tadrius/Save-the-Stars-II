@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
         Rigidbody rb = gameObject.AddComponent<Rigidbody>();
         rb.isKinematic = true;
         rb.useGravity = false;
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
     }
 
     private void OnParticleCollision(GameObject other) {
