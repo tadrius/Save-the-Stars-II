@@ -7,22 +7,37 @@ using UnityEngine.Playables;
 public class CollisionHandler : MonoBehaviour
 {
 
-    [Tooltip("A delay between triggering loading the next scene and loading the scene.")]
-    [SerializeField] float sceneLoadDelay = 2.75f;
+
+    [Tooltip("Particles to play on success.")]
+    [SerializeField] ParticleSystem successParticles;
+    [Tooltip("A delay between success triggering loading the next scene and loading the scene.")]
+    [SerializeField] float successSceneLoadDelay = 10.0f;
     [Tooltip("Particles to play on failure, from first to play to last.")]
     [SerializeField] ParticleSystem[] failParticles;
     [Tooltip("Delay between starting each fail particles.")]
     [SerializeField] float failParticlesDelay = 0.2f;
+    [Tooltip("A delay between failure triggering loading the next scene and loading the scene.")]
+    [SerializeField] float failSceneLoadDelay = 2.75f;
 
     private PlayableDirector timeline;
     private string masterTimeline = "MasterTimeline";
+    private string finish = "Finish";
 
     private void Start() {
         timeline = GameObject.FindGameObjectWithTag(masterTimeline).GetComponent<PlayableDirector>();
     }
 
     private void OnTriggerEnter(Collider other) {
-        InitiateFailSequence();
+        if (other.tag.Equals(finish)) 
+            InitiateSuccessSequence();
+        else {
+            InitiateFailSequence();
+        }
+    }
+
+    private void InitiateSuccessSequence() {
+        successParticles.Play();
+        LoadNextScene();
     }
 
     private void InitiateFailSequence() {
@@ -63,17 +78,21 @@ public class CollisionHandler : MonoBehaviour
         timeline.Pause();
     }
 
+    private void LoadNextScene() {
+        LoadScene(SceneManager.GetActiveScene().buildIndex + 1, successSceneLoadDelay);
+    }
+
     private void ReloadScene() {
-        LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LoadScene(SceneManager.GetActiveScene().buildIndex, failSceneLoadDelay);
     }
 
-    private void LoadScene(int sceneBuildIndex) {
-        StartCoroutine(LoadSceneWithDelay(sceneBuildIndex));
+    private void LoadScene(int sceneBuildIndex, float loadDelay) {
+        StartCoroutine(LoadSceneWithDelay(sceneBuildIndex, loadDelay));
     }
 
-    IEnumerator LoadSceneWithDelay(int sceneBuildIndex) {
+    IEnumerator LoadSceneWithDelay(int sceneBuildIndex, float loadDelay) {
         // delay scene load
-        for (float time = sceneLoadDelay; time >= 0; time -= Time.deltaTime)
+        for (float time = loadDelay; time >= 0; time -= Time.deltaTime)
         {
             yield return null;
         }

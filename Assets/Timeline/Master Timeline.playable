@@ -989,7 +989,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Almost Out
   - m_Version: 1
-    m_Start: 51.5
+    m_Start: 55.13333333333333
     m_ClipIn: 0
     m_Asset: {fileID: 8605183030176355207}
     m_Duration: 1.5166666666666657
@@ -4024,7 +4024,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Narrator Image
   - m_Version: 1
-    m_Start: 51.5
+    m_Start: 55.13333333333333
     m_ClipIn: 0
     m_Asset: {fileID: -185475344100298382}
     m_Duration: 1.5166666666666657
