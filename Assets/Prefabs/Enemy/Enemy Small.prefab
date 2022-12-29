@@ -371,8 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ebba4e7b0bb3f448db65ebf0d65ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathParticles: {fileID: 1773411739653543121, guid: 64a5abd9613651f45a3afdc444e90d5b,
-    type: 3}
+  deathFX: {fileID: 1773411739653543121, guid: 64a5abd9613651f45a3afdc444e90d5b, type: 3}
   hitValue: 1
   killValue: 3
   hitPoints: 2

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [Tooltip("VFX for enemy death.")]
-    [SerializeField] GameObject deathParticles;
+    [Tooltip("FX for enemy death.")]
+    [SerializeField] GameObject deathFX;  
     [Tooltip("Enemy hit value. When enemy is hit the player's score will increase by this amount.")]
     [SerializeField] int hitValue = 1;
     [Tooltip("Enemy kill value. When enemy is destroyed the player's score will increase by this amount.")]
@@ -49,8 +49,8 @@ public class Enemy : MonoBehaviour
     }
     
     private void SpawnDeathFX() {
-         // spawn death particles and child under runtime spawn parent
-        GameObject particlesInstance = Instantiate(deathParticles, transform.position, Quaternion.identity);
-        particlesInstance.transform.parent = RuntimeSpawnsParent.transform;       
+         // spawn death FX and child under runtime spawn parent
+        GameObject particlesInstance = Instantiate(deathFX, transform.position, Quaternion.identity);
+        particlesInstance.transform.parent = RuntimeSpawnsParent.transform;
     }
 }

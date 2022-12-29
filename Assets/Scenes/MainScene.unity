@@ -4262,12 +4262,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1482497564}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &685880076 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2065868480476793741, guid: 966a16a1066627240a20005afee802e3,
-    type: 3}
-  m_PrefabInstance: {fileID: 2065868481150023809}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &712318383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13486,21 +13480,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1043840320603994639, guid: f319949cb968848479debeecad72f6b7,
-        type: 3}
-      propertyPath: runtimeSpawnsParent
-      value: 
-      objectReference: {fileID: 685880076}
-    - target: {fileID: 2687672821740287974, guid: f319949cb968848479debeecad72f6b7,
-        type: 3}
-      propertyPath: moveWithTransform
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5578410633666581205, guid: f319949cb968848479debeecad72f6b7,
-        type: 3}
-      propertyPath: timeline
-      value: 
-      objectReference: {fileID: 1179093202}
     - target: {fileID: 6915005666750278480, guid: f319949cb968848479debeecad72f6b7,
         type: 3}
       propertyPath: m_RootOrder

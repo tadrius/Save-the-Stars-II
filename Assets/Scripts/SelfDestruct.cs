@@ -16,9 +16,17 @@ public class SelfDestruct : MonoBehaviour
     // }
 
     private void Update() {
+        bool particlesDone = false, audioDone = false;
         ParticleSystem ps = GetComponent<ParticleSystem>();
-        if (ps.isStopped) {
-            Destroy(this.gameObject);   
+        AudioSource aus = GetComponent<AudioSource>();
+        if (null != ps && ps.isStopped) {
+            particlesDone = true;
+        } 
+        if (null != aus && !aus.isPlaying) {
+            audioDone = true;              
+        }
+        if (particlesDone && audioDone) {
+            Destroy(this.gameObject);
         }
     }
 

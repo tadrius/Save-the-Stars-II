@@ -16,22 +16,29 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] ParticleSystem[] failParticles;
     [Tooltip("Delay between starting each fail particles.")]
     [SerializeField] float failParticlesDelay = 0.2f;
+    [Tooltip("Audio to play on fail.")]
+    [SerializeField] AudioSource[] failAudio;
     [Tooltip("A delay between failure triggering loading the next scene and loading the scene.")]
     [SerializeField] float failSceneLoadDelay = 2.75f;
 
     private PlayableDirector timeline;
     private string masterTimeline = "MasterTimeline";
     private string finish = "Finish";
+    private bool actionOccuring = false;
 
     private void Start() {
         timeline = GameObject.FindGameObjectWithTag(masterTimeline).GetComponent<PlayableDirector>();
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag.Equals(finish)) 
-            InitiateSuccessSequence();
-        else {
-            InitiateFailSequence();
+        // action occuring to prevent additional actions from triggering
+        if (!actionOccuring) {
+            actionOccuring = true;
+            if (other.tag.Equals(finish) && !actionOccuring) {
+                InitiateSuccessSequence();
+            } else {
+                InitiateFailSequence();
+            }
         }
     }
 
@@ -48,6 +55,11 @@ public class CollisionHandler : MonoBehaviour
     }
 
     IEnumerator PlayFailFXWithDelay() {
+        // play SFX
+        foreach (AudioSource aus in failAudio) {
+            aus.Play();
+        }
+        // play VFX
         for (int i = 0; i < failParticles.GetLength(0); i++) {
             failParticles[i].Play();
             // add a delay if the current index is the last available
