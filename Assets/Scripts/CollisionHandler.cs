@@ -7,7 +7,6 @@ using UnityEngine.Playables;
 public class CollisionHandler : MonoBehaviour
 {
 
-
     [Tooltip("Particles to play on success.")]
     [SerializeField] ParticleSystem successParticles;
     [Tooltip("A delay between success triggering loading the next scene and loading the scene.")]

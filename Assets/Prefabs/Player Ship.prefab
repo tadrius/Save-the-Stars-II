@@ -190,7 +190,7 @@ MonoBehaviour:
   yTranslateMin: -1.75
   rotationSpeed: 3.5
   weapons:
-  - {fileID: 6792844618319730715}
+  - {fileID: 357555622816656991}
 --- !u!1 &9205462494267793192
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +485,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Explode Audio
       objectReference: {fileID: 0}
+    - target: {fileID: 7593160085170537017, guid: 52ad5a7dd7a3c224b8058b2ce0974773,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8867876033699740826, guid: 52ad5a7dd7a3c224b8058b2ce0974773,
         type: 3}
       propertyPath: m_RootOrder
@@ -621,6 +626,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6904757109523007789, guid: ce5c4189d90ff9b4b8c5295521a452b2,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce5c4189d90ff9b4b8c5295521a452b2, type: 3}
 --- !u!4 &7907123228177547455 stripped
@@ -646,31 +656,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Laser Particles
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
-        type: 3}
-      propertyPath: CollisionModule.type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
-        type: 3}
-      propertyPath: CollisionModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
-        type: 3}
-      propertyPath: CollisionModule.m_Bounce.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
-        type: 3}
-      propertyPath: CollisionModule.collisionMessages
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930071375831177970, guid: 38dade0192faf97498d9159c40cba508,
-        type: 3}
-      propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7817643365859296353, guid: 38dade0192faf97498d9159c40cba508,
         type: 3}
@@ -729,32 +714,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38dade0192faf97498d9159c40cba508, type: 3}
+--- !u!114 &357555622816656991 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4783349653894571639, guid: 38dade0192faf97498d9159c40cba508,
+    type: 3}
+  m_PrefabInstance: {fileID: 5086699073876101160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71895e0905e29b46992063e0ac85a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3092368635390987337 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7817643365859296353, guid: 38dade0192faf97498d9159c40cba508,
     type: 3}
   m_PrefabInstance: {fileID: 5086699073876101160}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6792844618319730715 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1788665638033461299, guid: 38dade0192faf97498d9159c40cba508,
-    type: 3}
-  m_PrefabInstance: {fileID: 5086699073876101160}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6405405348475756494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6792844618319730715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b71895e0905e29b46992063e0ac85a42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitFX: {fileID: 1329845292236604, guid: 0f702fc0605daf84d92004eb9ae2aa38, type: 3}
-  damage: 1
 --- !u!1001 &8339118898692673949
 PrefabInstance:
   m_ObjectHideFlags: 0

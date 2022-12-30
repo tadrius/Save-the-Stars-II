@@ -30,16 +30,10 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float rotationSpeed = 3.5f;
     [Header("Other Settings")]
     [Tooltip("An array of game objects, each with a particle system component for projectiles.")]
-    [SerializeField] GameObject[] weapons;
+    [SerializeField] Weapon[] weapons;
 
     float xMove = 0.0f, yMove = 0.0f;
     float normalizedPitch = 0.5f, normalizedRoll = 0.5f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        SetWeaponsActive(false);
-    }
 
     void OnEnable() {
         movement.Enable();
@@ -153,9 +147,8 @@ public class PlayerControls : MonoBehaviour
 
     
     public void SetWeaponsActive(bool isActive) {
-        foreach (GameObject weapon in weapons) {
-            var em = weapon.GetComponent<ParticleSystem>().emission;
-            em.enabled = isActive;
+        foreach (Weapon weapon in weapons) {
+            weapon.SetWeaponsActive(isActive);
         }
     }
 }

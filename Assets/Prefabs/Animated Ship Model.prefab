@@ -879,6 +879,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Engine Particles
       objectReference: {fileID: 0}
+    - target: {fileID: 8273624724356400008, guid: 56f4a45e8cc640941a252282dedffd07,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56f4a45e8cc640941a252282dedffd07, type: 3}
 --- !u!4 &91212643840102685 stripped
