@@ -33,7 +33,7 @@ public class CollisionHandler : MonoBehaviour
         // action occuring to prevent additional actions from triggering
         if (!actionOccuring) {
             actionOccuring = true;
-            if (other.tag.Equals(finish) && !actionOccuring) {
+            if (other.tag.Equals(finish)) {
                 InitiateSuccessSequence();
             } else {
                 InitiateFailSequence();
@@ -43,6 +43,7 @@ public class CollisionHandler : MonoBehaviour
 
     private void InitiateSuccessSequence() {
         successParticles.Play();
+        DeactivateControls();       
         LoadNextScene();
     }
 
